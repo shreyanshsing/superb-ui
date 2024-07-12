@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
+import 'package:video_streaming_ui/theme/palette.dart';
 
 // ignore: must_be_immutable
 class CustomText extends StatelessWidget {
   final String text;
-  SIZE? fontSize = SIZE.medium;
-  WEIGHT? fontWeight = WEIGHT.regular;
-  COLOR? color = COLOR.secondary;
+  Size? fontSize = Size.medium;
+  TextWeight? fontWeight = TextWeight.regular;
+  TextColor? color = TextColor.primary;
   double? letterSpacing;
-  TYPE? type = TYPE.body;
+  TextType? type = TextType.body;
   double? customFontSize;
 
   CustomText({
@@ -24,17 +25,17 @@ class CustomText extends StatelessWidget {
 
   double? getFontSize() {
     switch (fontSize) {
-      case SIZE.small:
+      case Size.small:
         return 12.0;
-      case SIZE.medium:
+      case Size.medium:
         return 16.0;
-      case SIZE.large:
+      case Size.large:
         return 20.0;
-      case SIZE.extraLarge:
-        return 30.0;
-      case SIZE.extraExtraLarge:
-        return 40.0;
-      case SIZE.custom:
+      case Size.extraLarge:
+        return 28.0;
+      case Size.extraExtraLarge:
+        return 32.0;
+      case Size.custom:
         return customFontSize;
       default:
         return 16.0;
@@ -43,33 +44,35 @@ class CustomText extends StatelessWidget {
 
   FontWeight? getFontWeight() {
     switch (fontWeight) {
-      case WEIGHT.light:
+      case TextWeight.light:
+        return FontWeight.w200;
+      case TextWeight.regular:
         return FontWeight.w300;
-      case WEIGHT.regular:
+      case TextWeight.medium:
         return FontWeight.w400;
-      case WEIGHT.medium:
-        return FontWeight.w500;
-      case WEIGHT.semiBold:
+      case TextWeight.semiBold:
         return FontWeight.w600;
-      case WEIGHT.bold:
+      case TextWeight.bold:
         return FontWeight.w700;
       default:
-        return FontWeight.w400;
+        return FontWeight.w300;
     }
   }
 
-  Color? getColor() {
+  Color getColor() {
     switch (color) {
-      case COLOR.primary:
-        return const Color(0xff32b1ea);
-      case COLOR.secondary:
-        return const Color.fromARGB(255, 255, 255, 255);
-      case COLOR.tertiary:
-        return const Color.fromARGB(200, 255, 255, 255);
-      case COLOR.red:
-        return const Color.fromARGB(255, 255, 0, 0);
+      case TextColor.primary:
+        return ColorPalette.primaryTextColor;
+      case TextColor.secondary:
+        return ColorPalette.secondaryTextColor;
+      case TextColor.tertiary:
+        return ColorPalette.tertiaryTextColor;
+      case TextColor.error:
+        return ColorPalette.errorTextColor;
+      case TextColor.highlight:
+        return ColorPalette.highlightTextColor;
       default:
-        return Colors.white;
+        return ColorPalette.primaryTextColor;
     }
   }
 
@@ -83,6 +86,7 @@ class CustomText extends StatelessWidget {
         fontWeight: getFontWeight(),
         color: getColor(),
         letterSpacing: letterSpacing,
+        fontFamily: 'NotoSans',
       ),
     );
   }

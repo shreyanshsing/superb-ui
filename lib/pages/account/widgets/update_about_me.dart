@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:video_streaming_ui/pages/account/models/personal_info_model.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_textarea.dart';
@@ -45,7 +44,7 @@ class _UpdateAboutMe extends State<UpdateAboutMe> {
     return AppBar(
       leading: Icon(Icons.info, color: Theme.of(context).primaryColor),
       automaticallyImplyLeading: false,
-      title: CustomText(text: 'Update About Me Information'),
+      title: CustomText(text: 'Update About Me'),
       actions: [
         showCancelButton(),
       ],
@@ -63,7 +62,7 @@ class _UpdateAboutMe extends State<UpdateAboutMe> {
             child: CustomTextArea(
               controller: _aboutMeController,
               labelText: 'About Me',
-              maxLines: 7,
+              maxLines: 15,
             ),
           ),
         ],
@@ -99,17 +98,11 @@ class _UpdateAboutMe extends State<UpdateAboutMe> {
       decoration: BoxDecoration(
         color: _metaData.getBackgroundColor(),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      child: Row(
-        children: [
-          Expanded(
-            child: CustomButton(
-              color: COLOR.primary,
-              onPressed: () {},
-              text: 'Save',
-            ),
-          ),
-        ],
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      child: CustomButton(
+        onPressed: () {},
+        text: 'Save',
+        isFullWidth: true,
       ),
     );
   }

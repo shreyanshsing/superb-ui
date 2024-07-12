@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 const List<String> sortOptions = ['Recents', 'Recently Added', 'Alphabetical'];
 
@@ -58,8 +58,8 @@ class _SortListState extends State<SortList> {
       ),
       child: CustomText(
         text: 'Sort By',
-        fontSize: SIZE.large,
-        fontWeight: WEIGHT.bold,
+        fontSize: Size.large,
+        fontWeight: TextWeight.bold,
       ),
     );
   }
@@ -72,7 +72,7 @@ class _SortListState extends State<SortList> {
       ),
       title: CustomText(
         text: text,
-        fontWeight: selected == index ? WEIGHT.bold : WEIGHT.regular,
+        fontWeight: selected == index ? TextWeight.bold : TextWeight.regular,
       ),
       onTap: () => handleChange(index),
     );

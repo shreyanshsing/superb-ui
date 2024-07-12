@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:video_streaming_ui/pages/account/models/personal_info_model.dart';
 import 'package:video_streaming_ui/pages/account/widgets/update_about_me.dart';
 import 'package:video_streaming_ui/pages/account/widgets/update_personal_info.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 enum ProfileSectionType {
   personalInfo,
@@ -42,8 +42,8 @@ class ProfileSectionLayout extends StatelessWidget {
       ),
       child: CustomText(
         text: label,
-        fontSize: SIZE.small,
-        fontWeight: WEIGHT.medium,
+        fontSize: Size.small,
+        fontWeight: TextWeight.medium,
       ),
     );
   }

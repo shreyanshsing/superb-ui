@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:video_streaming_ui/pages/account/models/personal_info_model.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_textfield.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 import 'package:video_streaming_ui/shared/utils/context_meta_data.dart';
 
 class UpdatePersonalInfo extends StatefulWidget {
@@ -167,17 +167,12 @@ class _UpdatePersonalInfoState extends State<UpdatePersonalInfo> {
       decoration: BoxDecoration(
         color: _metaData.getBackgroundColor(),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      child: Row(
-        children: [
-          Expanded(
-            child: CustomButton(
-              color: COLOR.primary,
-              onPressed: () {},
-              text: 'Save',
-            ),
-          ),
-        ],
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      child: CustomButton(
+        color: ButtonColor.primary,
+        onPressed: () {},
+        text: 'Save',
+        isFullWidth: true,
       ),
     );
   }

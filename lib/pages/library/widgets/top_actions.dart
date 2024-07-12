@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_streaming_ui/pages/library/widgets/sort_list.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 const List<String> sortOptions = ['Recents', 'Recently Added', 'Alphabetical'];
 
@@ -40,7 +40,7 @@ class _TopActionsState extends State<TopActions> {
       icon: Icons.sort,
       text: sortOptions[selected],
       onPressed: () => showSortList(context),
-      type: BUTTON_TYPE.text,
+      type: ButtonType.text,
     );
   }
 

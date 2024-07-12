@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:video_streaming_ui/pages/account/widgets/about_section.dart';
 import 'package:video_streaming_ui/pages/account/widgets/personal_info_section.dart';
 import 'package:video_streaming_ui/pages/account/widgets/user_avatar.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/bottom_nav.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -32,9 +32,9 @@ class _AccountState extends State<Account> {
   Widget showDeleteAccount() {
     return CustomButton(
       icon: Icons.delete,
-      type: BUTTON_TYPE.text,
+      type: ButtonType.text,
       text: 'Delete Account',
-      textColor: COLOR.red,
+      textColor: TextColor.error,
       onPressed: () {},
     );
   }
@@ -42,7 +42,7 @@ class _AccountState extends State<Account> {
   Widget showLogoutButton() {
     return CustomButton(
       icon: Icons.logout,
-      type: BUTTON_TYPE.text,
+      type: ButtonType.text,
       text: 'Logout',
       onPressed: () {},
     );
@@ -51,9 +51,11 @@ class _AccountState extends State<Account> {
   Widget showTermsAndConditions() {
     return CustomButton(
       icon: Icons.info,
-      type: BUTTON_TYPE.text,
+      type: ButtonType.text,
       text: 'Terms and Conditions',
       onPressed: () {},
+      textColor: TextColor.primary,
+      textSize: Size.medium,
     );
   }
 

@@ -2,16 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:video_streaming_ui/router/main.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
+import 'package:video_streaming_ui/router/navigation_service.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_textfield.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -20,13 +21,20 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
+  late NavigationService navigationService;
+
+  @override
+  void initState() {
+    super.initState();
+    navigationService = NavigationService(context);
+  }
 
   void login() {
     log('Email: ${emailController.text}');
     log('Password: ${passwordController.text}');
     if (formKey.currentState!.validate()) {
       log('Form is valid');
-      Navigator.pushNamed(context, CustomRouter.dashboard);
+      navigationService.push(CustomRouter.dashboard);
     } else {
       log('Form is invalid');
     }
@@ -34,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void routeToSignUp() {
     log('Route to sign up');
-    Navigator.pushNamed(context, CustomRouter.signupLandingPage);
+    navigationService.push(CustomRouter.signup);
   }
 
   Widget showWelcomeText() {
@@ -43,8 +51,8 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.symmetric(vertical: 50),
       child: CustomText(
         text: 'Log In',
-        fontSize: SIZE.extraLarge,
-        fontWeight: WEIGHT.bold,
+        fontSize: Size.extraLarge,
+        fontWeight: TextWeight.bold,
       ),
     );
   }
@@ -111,7 +119,8 @@ class _LoginPageState extends State<LoginPage> {
             showPasswordTextField(),
             const SizedBox(height: 20),
             CustomButton(
-              color: COLOR.primary,
+              isFullWidth: true,
+              color: ButtonColor.primary,
               text: 'Log In',
               onPressed: login,
             )
@@ -131,16 +140,13 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           CustomText(
             text: 'Forgot your password?',
-            fontSize: SIZE.medium,
+            color: TextColor.tertiary,
           ),
-          TextButton(
+          CustomButton(
+            text: 'Reset',
             onPressed: () {},
-            child: CustomText(
-              text: 'Reset',
-              fontSize: SIZE.medium,
-              fontWeight: WEIGHT.bold,
-              color: COLOR.primary,
-            ),
+            color: ButtonColor.tertiary,
+            type: ButtonType.text,
           )
         ],
       ),
@@ -158,17 +164,13 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             CustomText(
               text: 'Don\'t have an account?',
-              fontSize: SIZE.medium,
-              color: COLOR.tertiary,
+              color: TextColor.tertiary,
             ),
-            TextButton(
+            CustomButton(
+              text: 'Sign Up',
               onPressed: routeToSignUp,
-              child: CustomText(
-                text: 'Sign Up',
-                fontSize: SIZE.medium,
-                fontWeight: WEIGHT.bold,
-                color: COLOR.primary,
-              ),
+              color: ButtonColor.primary,
+              type: ButtonType.text,
             )
           ],
         ),

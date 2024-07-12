@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/pill_text.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart' show TextWeight;
 import 'package:video_streaming_ui/shared/utils/context_meta_data.dart';
 
 class LibraryHeader extends StatefulWidget implements PreferredSizeWidget {
@@ -26,8 +26,7 @@ class _LibraryHeaderState extends State<LibraryHeader> {
   Widget showLabel() {
     return CustomText(
       text: 'Your Library',
-      fontSize: SIZE.extraLarge,
-      fontWeight: WEIGHT.bold,
+      fontWeight: TextWeight.bold,
     );
   }
 

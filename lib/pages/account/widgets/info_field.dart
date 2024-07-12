@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 class InfoField extends StatelessWidget {
   const InfoField({
@@ -22,17 +22,17 @@ class InfoField extends StatelessWidget {
         Flexible(
           child: CustomText(
             text: label,
-            fontSize: SIZE.small,
-            fontWeight: WEIGHT.light,
-            color: COLOR.tertiary,
+            fontSize: Size.small,
+            fontWeight: TextWeight.light,
+            color: TextColor.tertiary,
           ),
         ),
         const SizedBox(height: 10),
         Flexible(
           child: CustomText(
             text: value,
-            fontSize: SIZE.medium,
-            fontWeight: WEIGHT.light,
+            fontSize: Size.medium,
+            fontWeight: TextWeight.light,
           ),
         ),
       ],

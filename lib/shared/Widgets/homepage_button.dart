@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:video_streaming_ui/theme/palette.dart';
 
 class HomepageButton extends StatefulWidget {
   final Function onComplete;
   const HomepageButton({super.key, required this.onComplete});
 
   @override
-  _HomepageButtonState createState() => _HomepageButtonState();
+  State<HomepageButton> createState() => _HomepageButtonState();
 }
 
 class _HomepageButtonState extends State<HomepageButton>
@@ -38,8 +39,8 @@ class _HomepageButtonState extends State<HomepageButton>
       childWhenDragging: Container(),
       onDragUpdate: (details) {
         final newPosition = _dragPosition + details.delta.dx;
-        if (newPosition >= rowWidth - 100) {
-          widget.onComplete.call(context);
+        if (newPosition >= rowWidth - 120) {
+          widget.onComplete.call();
           return;
         }
         if (newPosition >= 30 && newPosition <= rowWidth - 100) {
@@ -56,8 +57,8 @@ class _HomepageButtonState extends State<HomepageButton>
   Widget letsGoTextContent(double rowWidth) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
-        horizontal: 15.0,
+        vertical: 10.0,
+        horizontal: 10.0,
       ),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -72,9 +73,10 @@ class _HomepageButtonState extends State<HomepageButton>
             textAlign: TextAlign.start,
             text: const TextSpan(
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: ColorPalette.primaryColor,
+                fontFamily: 'Rock3D',
               ),
               children: [
                 TextSpan(
@@ -82,16 +84,13 @@ class _HomepageButtonState extends State<HomepageButton>
                 ),
                 TextSpan(
                   text: ' Go! ',
-                  style: TextStyle(
-                    color: Color(0xff8048f1),
-                  ),
                 ),
               ],
             ),
           ),
           AnimatedIcon(
             size: 25.0,
-            color: const Color(0xff8048f1),
+            color: ColorPalette.primaryColor,
             icon: AnimatedIcons.pause_play,
             progress: _controller,
           ),
@@ -106,8 +105,8 @@ class _HomepageButtonState extends State<HomepageButton>
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Theme.of(context).primaryColor,
+            colors: const [
+              ColorPalette.primaryColor,
               Colors.transparent,
             ],
             stops: [_dragPosition / _rowWidth, _dragPosition / _rowWidth],

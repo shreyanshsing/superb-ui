@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 enum ImagePickerType {
   camera,
@@ -105,8 +105,8 @@ class CustomImagePicker extends StatelessWidget {
       ),
       title: CustomText(
         text: option['label'] as String,
-        fontSize: SIZE.large,
-        fontWeight: WEIGHT.light,
+        fontSize: Size.large,
+        fontWeight: TextWeight.light,
       ),
       onTap: () {
         handleOptions(context, option['type'] as ImagePickerType);
@@ -140,7 +140,7 @@ class CustomImagePicker extends StatelessWidget {
       children: [
         CustomText(
           text: 'Choose an option',
-          fontSize: SIZE.large,
+          fontSize: Size.large,
         ),
         IconButton(
           icon: const Icon(Icons.close),

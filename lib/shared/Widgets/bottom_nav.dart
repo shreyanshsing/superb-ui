@@ -1,26 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:video_streaming_ui/router/main.dart';
+import 'package:video_streaming_ui/router/navigation_service.dart';
 
-class BottomNav extends StatelessWidget {
-  BottomNav({
-    super.key,
-    required this.currentIndex,
-  });
+class BottomNav extends StatefulWidget {
+  final int currentIndex;
+  const BottomNav({super.key, required this.currentIndex});
 
+  @override
+  State<BottomNav> createState() => _BottomNavState();
+}
+
+class _BottomNavState extends State<BottomNav> {
   int currentIndex = 0;
+  late NavigationService navigationService;
+
+  @override
+  void initState() {
+    super.initState();
+    navigationService = NavigationService(context);
+    currentIndex = widget.currentIndex;
+  }
 
   void routeToPage(BuildContext context, int index) {
     switch (index) {
       case 0:
-        Navigator.pushNamed(context, '/dashboard');
+        navigationService.push(CustomRouter.dashboard);
         break;
       case 1:
-        Navigator.pushNamed(context, '/explore');
+        navigationService.push(CustomRouter.explore);
         break;
       case 2:
-        Navigator.pushNamed(context, '/library');
+        navigationService.push(CustomRouter.library);
         break;
       case 3:
-        Navigator.pushNamed(context, '/account');
+        navigationService.push(CustomRouter.account);
         break;
     }
   }

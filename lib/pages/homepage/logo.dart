@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 class AnimatedAppLogo extends StatefulWidget {
   const AnimatedAppLogo({super.key});
@@ -94,9 +94,9 @@ class AnimatedAppLogoState extends State<AnimatedAppLogo>
             opacity: _animations[i],
             child: CustomText(
               text: 'Superb'[i],
-              fontSize: SIZE.custom,
-              color: COLOR.primary,
-              fontWeight: WEIGHT.bold,
+              fontSize: Size.custom,
+              color: TextColor.primary,
+              fontWeight: TextWeight.bold,
               letterSpacing: 2,
               customFontSize: 50.0,
             ),
@@ -111,9 +111,9 @@ class AnimatedAppLogoState extends State<AnimatedAppLogo>
               ),
               child: CustomText(
                 text: '!',
-                fontSize: SIZE.extraLarge,
-                color: COLOR.primary,
-                fontWeight: WEIGHT.bold,
+                fontSize: Size.extraLarge,
+                color: TextColor.primary,
+                fontWeight: TextWeight.bold,
                 letterSpacing: 2,
               ),
             ),

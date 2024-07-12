@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
+import 'package:video_streaming_ui/theme/palette.dart';
 
 const data = [
   {
@@ -15,8 +16,10 @@ const data = [
 ];
 
 class DescriptionStepper extends StatefulWidget {
+  const DescriptionStepper({super.key});
+
   @override
-  _DescriptionStepperState createState() => _DescriptionStepperState();
+  State<DescriptionStepper> createState() => _DescriptionStepperState();
 }
 
 class _DescriptionStepperState extends State<DescriptionStepper> {
@@ -47,20 +50,19 @@ class _DescriptionStepperState extends State<DescriptionStepper> {
     });
   }
 
-  Widget showControls(context) {
+  Widget showControls() {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           for (int i = 0; i < data.length; i++)
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: CircleAvatar(
-                radius: 6,
-                backgroundColor: i == _currentStep
-                    ? Theme.of(context).primaryColor
-                    : Colors.grey,
+                radius: 5,
+                backgroundColor:
+                    i == _currentStep ? ColorPalette.primaryColor : Colors.grey,
               ),
             ),
         ],
@@ -71,17 +73,12 @@ class _DescriptionStepperState extends State<DescriptionStepper> {
   Widget showContent() {
     return Center(
       child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: Column(
-            children: [
-              CustomText(
-                text: data[_currentStep]['label']!,
-                fontSize: SIZE.large,
-                color: COLOR.tertiary,
-                fontWeight: WEIGHT.regular,
-              ),
-            ],
-          )),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        child: CustomText(
+          text: data[_currentStep]['label']!,
+          fontSize: Size.large,
+        ),
+      ),
     );
   }
 
@@ -90,14 +87,16 @@ class _DescriptionStepperState extends State<DescriptionStepper> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-        width: screenWidth,
-        height: screenHeight / 5,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            showContent(),
-            showControls(context),
-          ],
-        ));
+      width: screenWidth,
+      height: screenHeight / 5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          showContent(),
+          showControls(),
+        ],
+      ),
+    );
   }
 }

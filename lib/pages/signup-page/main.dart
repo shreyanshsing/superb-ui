@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_streaming_ui/pages/signup-page/controller/signup_bloc.dart';
 import 'package:video_streaming_ui/router/main.dart';
-import 'package:video_streaming_ui/shared/Widgets/CustomText/enum.dart';
+import 'package:video_streaming_ui/router/navigation_service.dart';
 import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_textfield.dart';
+import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   @override
-  _SignupPageState createState() => _SignupPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
 class _SignupPageState extends State<SignupPage> {
@@ -29,6 +30,13 @@ class _SignupPageState extends State<SignupPage> {
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
   bool isLoading = false;
+  late NavigationService navigationService;
+
+  @override
+  void initState() {
+    super.initState();
+    navigationService = NavigationService(context);
+  }
 
   get inputVariables => {
         'email': emailController.text,
@@ -47,14 +55,19 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
+  void routeToLogin() {
+    log('Route to login');
+    navigationService.push(CustomRouter.login);
+  }
+
   Widget showWelcomeText() {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(top: 50),
       child: CustomText(
         text: 'Sign Up',
-        fontSize: SIZE.extraLarge,
-        fontWeight: WEIGHT.bold,
+        fontSize: Size.extraLarge,
+        fontWeight: TextWeight.bold,
       ),
     );
   }
@@ -204,20 +217,13 @@ class _SignupPageState extends State<SignupPage> {
         children: [
           CustomText(
             text: 'Already with us?',
-            fontSize: SIZE.medium,
-            fontWeight: WEIGHT.bold,
-            color: COLOR.tertiary,
+            fontWeight: TextWeight.bold,
+            color: TextColor.tertiary,
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, CustomRouter.loginLandingPage);
-            },
-            child: CustomText(
-              text: 'Log in',
-              fontSize: SIZE.medium,
-              fontWeight: WEIGHT.bold,
-              color: COLOR.primary,
-            ),
+          CustomButton(
+            text: 'Log in',
+            onPressed: routeToLogin,
+            type: ButtonType.text,
           ),
         ],
       ),
@@ -229,9 +235,9 @@ class _SignupPageState extends State<SignupPage> {
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
       child: CustomButton(
-        color: COLOR.primary,
         text: 'Create account',
         onPressed: signup,
+        isFullWidth: true,
       ),
     );
   }
@@ -296,7 +302,7 @@ class _SignupPageState extends State<SignupPage> {
     switch (state.runtimeType) {
       case SignupSuccess:
         isLoading = false;
-        Navigator.pushNamed(context, CustomRouter.loginLandingPage);
+        Navigator.pushNamed(context, CustomRouter.login);
         break;
       case SignupFailure:
         isLoading = false;
