@@ -7,6 +7,7 @@ import 'package:video_streaming_ui/shared/Widgets/CustomText/main.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_textfield.dart';
 import 'package:video_streaming_ui/shared/Widgets/enum.dart';
+import 'package:video_streaming_ui/shared/Widgets/welcome_heading.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -49,10 +50,18 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 50),
-      child: CustomText(
-        text: 'Log In',
-        fontSize: Size.extraLarge,
-        fontWeight: TextWeight.bold,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const WelcomeHeading(),
+          CustomText(
+            text: 'Log In',
+            fontSize: Size.extraLarge,
+            fontWeight: TextWeight.bold,
+          ),
+        ],
       ),
     );
   }
@@ -221,7 +230,7 @@ class _LoginPageState extends State<LoginPage> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/hero.png'),
+                image: AssetImage('assets/images/homepage.png'),
                 fit: BoxFit.cover,
               ),
             ),

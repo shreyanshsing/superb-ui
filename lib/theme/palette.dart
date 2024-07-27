@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ColorPalette {
   static const primaryColor = Color(0xff32b1ea);
   static const backgroundColor = Colors.black12;
+  static const backgroundSecondaryColor = Colors.white;
 
   static const primaryTextColor = Colors.white;
   static const secondaryTextColor = Colors.black;
@@ -13,4 +14,6 @@ class ColorPalette {
   static const primaryButtonColor = Color(0xff32b1ea);
   static const secondaryButtonColor = Colors.white;
   static const tertiaryButtonColor = Colors.black;
+
+  static const selectedAvatarBorderColor = Colors.green;
 }

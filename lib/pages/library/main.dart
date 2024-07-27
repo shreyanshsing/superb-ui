@@ -29,7 +29,7 @@ class Library extends StatelessWidget {
     return Scaffold(
       appBar: const LibraryHeader(),
       body: showBody(),
-      bottomNavigationBar: BottomNav(currentIndex: 2),
+      bottomNavigationBar: const BottomNav(currentIndex: 2),
     );
   }
 }

@@ -76,12 +76,10 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        extendBody: true,
-        body: showBody(),
-        bottomNavigationBar: showContinueButton(context),
-      ),
+    return Scaffold(
+      extendBody: true,
+      body: showBody(),
+      bottomNavigationBar: showContinueButton(context),
     );
   }
 }

@@ -45,11 +45,17 @@ class _SignupPageState extends State<SignupPage> {
         'last_name': lastNameController.text,
       };
 
+  void routeToAvatarSelectionPage() {
+    log('Route to avatar selection page');
+    navigationService.push(CustomRouter.chooseAvatar);
+  }
+
   void signup() {
     if (formKey.currentState!.validate()) {
       log('Form is valid');
       log('input variables ---> $inputVariables');
-      context.read<SignupBloc>().add(SignupUser(variables: inputVariables));
+      routeToAvatarSelectionPage();
+      // context.read<SignupBloc>().add(SignupUser(variables: inputVariables));
     } else {
       log('Form is invalid');
     }
@@ -286,7 +292,7 @@ class _SignupPageState extends State<SignupPage> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/hero.png'),
+                image: AssetImage('assets/images/homepage.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -300,16 +306,15 @@ class _SignupPageState extends State<SignupPage> {
   void _listener(BuildContext context, state) {
     log('state ---> ${state.runtimeType}');
     switch (state.runtimeType) {
-      case SignupSuccess:
+      case const (SignupSuccess):
         isLoading = false;
-        Navigator.pushNamed(context, CustomRouter.login);
         break;
-      case SignupFailure:
+      case const (SignupFailure):
         isLoading = false;
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(state.error)));
         break;
-      case SignupLoading:
+      case const (SignupLoading):
         isLoading = true;
         break;
     }

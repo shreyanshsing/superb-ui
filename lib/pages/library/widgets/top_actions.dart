@@ -3,7 +3,7 @@ import 'package:video_streaming_ui/pages/library/widgets/sort_list.dart';
 import 'package:video_streaming_ui/shared/Widgets/custom_button.dart';
 import 'package:video_streaming_ui/shared/Widgets/enum.dart';
 
-const List<String> sortOptions = ['Recents', 'Recently Added', 'Alphabetical'];
+const List<String> sortOptions = ['Recent', 'Recently Added', 'Alphabetical'];
 
 class TopActions extends StatefulWidget {
   const TopActions({super.key});

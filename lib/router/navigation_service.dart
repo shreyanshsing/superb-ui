@@ -18,8 +18,10 @@ class NavigationService {
     );
   }
 
-  void replace(String routeName, Map<String, String>? pathParameters,
-      Map<String, dynamic>? queryParameters, Object? extra) {
+  void replace(String routeName,
+      {Map<String, String>? pathParameters,
+      Map<String, dynamic>? queryParameters,
+      Object? extra}) {
     context.replaceNamed(
       routeName,
       queryParameters: queryParameters ?? {},

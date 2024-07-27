@@ -1,10 +1,12 @@
 import 'package:go_router/go_router.dart';
 import 'package:video_streaming_ui/pages/account/main.dart';
 import 'package:video_streaming_ui/pages/dashboard/main.dart';
-import 'package:video_streaming_ui/pages/homepage/main.dart';
 import 'package:video_streaming_ui/pages/library/main.dart';
 import 'package:video_streaming_ui/pages/login-page/main.dart';
+import 'package:video_streaming_ui/pages/signup-page/choose_avatar.dart';
 import 'package:video_streaming_ui/pages/signup-page/main.dart';
+import 'package:video_streaming_ui/pages/signup-page/select_intrerests.dart';
+import 'package:video_streaming_ui/pages/signup-page/select_username_and_dob.dart';
 
 class CustomRouter {
   // public routes
@@ -18,6 +20,9 @@ class CustomRouter {
   static const String explore = '/explore';
   static const String library = '/library';
   static const String account = '/account';
+  static const String chooseAvatar = 'choose-avatar';
+  static const String chooseUsernameAndDOB = 'choose-username-dob';
+  static const String selectInterests = 'select-interests';
 
   static final GoRouter router = GoRouter(
     initialLocation: home,
@@ -25,12 +30,35 @@ class CustomRouter {
       GoRoute(
         name: home,
         path: home,
-        builder: (context, state) => const Homepage(),
+        builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         name: signup,
         path: signup,
         builder: (context, state) => const SignupPage(),
+        routes: [
+          GoRoute(
+            name: chooseAvatar,
+            path: chooseAvatar,
+            builder: (context, state) {
+              return const ChooseAvatar();
+            },
+          ),
+          GoRoute(
+            path: chooseUsernameAndDOB,
+            name: chooseUsernameAndDOB,
+            builder: (context, state) {
+              return const SelectUsernameAndDob();
+            },
+          ),
+          GoRoute(
+            name: selectInterests,
+            path: selectInterests,
+            builder: (context, state) {
+              return const SelectInterests();
+            },
+          ),
+        ],
       ),
       GoRoute(
         name: login,
